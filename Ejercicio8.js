@@ -25,7 +25,8 @@ class Controller {
                     this.preassureHumidityParagraph(placeMeteo.main.pressure, placeMeteo.main.humidity),
                     this.temperatureParagraph(placeMeteo.main.temp, placeMeteo.main.feels_like, placeMeteo.main.temp_min, placeMeteo.main.temp_max),
                     this.windParagraph(placeMeteo.wind.deg, placeMeteo.wind.speed),
-                    this.visibilityCloudsParagraph(placeMeteo.visibility, placeMeteo.clouds.all));
+                    this.visibilityCloudsParagraph(placeMeteo.visibility, placeMeteo.clouds.all),
+                    this.sunriseSunsetParagraph(placeMeteo.sys.sunrise, placeMeteo.sys.sunset));
                 return section;
             })));
     }
@@ -60,8 +61,8 @@ class Controller {
         return p;
     }
     sunriseSunsetParagraph(sunrise, sunset) {
-        const sunriseTime = new Date(sunrise * 1000).toLocaleDateString();
-        const sunsetTime = new Date(sunset * 1000).toLocaleDateString();
+        const sunriseTime = new Date(sunrise * 1000).toLocaleTimeString('es-ES');
+        const sunsetTime = new Date(sunset * 1000).toLocaleTimeString('es-ES');
         const p = document.createElement('p');
         p.append(`El amanecer es a las ${sunriseTime} y el anochecer a las ${sunsetTime}`);
         return p;
