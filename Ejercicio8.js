@@ -35,9 +35,11 @@ class Controller {
     }
     section(place) {
         const section = document.createElement('section');
+        const header = document.createElement('header');
         const title = document.createElement('h2');
         title.append(place);
-        section.append(title);
+        header.append(title);
+        section.append(header);
         return section;
     }
     coordsParagraph(lon, lat) {
